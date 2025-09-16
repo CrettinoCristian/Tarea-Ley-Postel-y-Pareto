@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Ley de Postel y Pareto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Comparación de Interfaces: Carrito de Compras</h1>
+        
+        <!-- Versión A: Correcta (Cumple Ley de Postel y Pareto) -->
+        <section class="version-a">
+            <h2>Versión A - Correcta ✅</h2>
+            <p class="description">Cumple con la Ley de Postel y la Ley de Pareto</p>
+            
+            <div class="cart-container">
+                <div class="cart-header">
+                    <h3>Mi Carrito</h3>
+                    <span class="item-count">3 productos</span>
+                </div>
+                
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23e0e0e0'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='%23666' font-size='12'%3EProducto%3C/text%3E%3C/svg%3E" alt="Producto 1">
+                        <div class="item-details">
+                            <h4>Smartphone XYZ</h4>
+                            <p class="price">$299.99</p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity('item1', -1)">-</button>
+                            <input type="number" id="qty-item1" value="1" min="1" onchange="validateQuantity(this)">
+                            <button class="qty-btn" onclick="updateQuantity('item1', 1)">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem('item1')">×</button>
+                    </div>
+                    
+                    <div class="cart-item">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23e0e0e0'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='%23666' font-size='12'%3EProducto%3C/text%3E%3C/svg%3E" alt="Producto 2">
+                        <div class="item-details">
+                            <h4>Auriculares Pro</h4>
+                            <p class="price">$89.99</p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity('item2', -1)">-</button>
+                            <input type="number" id="qty-item2" value="2" min="1" onchange="validateQuantity(this)">
+                            <button class="qty-btn" onclick="updateQuantity('item2', 1)">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem('item2')">×</button>
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="total">
+                        <strong>Total: $479.97</strong>
+                    </div>
+                    <button class="checkout-btn">Proceder al Pago</button>
+                </div>
+                
+                <div class="promo-code">
+                    <input type="text" placeholder="Código de descuento (opcional)" id="promo-input-a">
+                    <button onclick="applyPromo('a')">Aplicar</button>
+                </div>
+            </div>
+            
+            <!-- Explicación Versión A -->
+            <div class="explanation">
+                <h4>📋 Explicación - Versión A (Correcta)</h4>
+                <div class="law-explanation">
+                    <h5>🔄 Ley de Postel ("Sé liberal en lo que aceptas, conservador en lo que envías")</h5>
+                    <p><strong>Aplicación correcta:</strong> La interfaz acepta múltiples formatos de entrada del usuario de manera flexible. Por ejemplo, en el campo de cantidad, acepta números con caracteres no numéricos y los limpia automáticamente, estableciendo valores por defecto cuando la entrada está vacía. Los códigos promocionales aceptan diferentes formatos (DESCUENTO10, DESC10, 10OFF) y son tolerantes a variaciones, mostrando mensajes informativos en lugar de errores estrictos.</p>
+                </div>
+                <div class="law-explanation">
+                    <h5>📊 Ley de Pareto (80/20)</h5>
+                    <p><strong>Aplicación correcta:</strong> La interfaz se enfoca en el 20% de funcionalidades que proporcionan el 80% del valor: ver productos, modificar cantidades, eliminar items y proceder al pago. Estas acciones principales están claramente visibles y accesibles, mientras que funciones secundarias como códigos promocionales están presentes pero no dominan la interfaz.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Versión B: Incorrecta (Incumple Ley de Postel y Pareto) -->
+        <section class="version-b">
+            <h2>Versión B - Incorrecta ❌</h2>
+            <p class="description">Incumple la Ley de Postel y la Ley de Pareto</p>
+            
+            <div class="cart-container-b">
+                <div class="cart-header-b">
+                    <h3>🛒 CARRITO DE COMPRAS PREMIUM DELUXE 🛒</h3>
+                    <div class="unnecessary-info">
+                        <span>ID Sesión: #ABC123XYZ</span>
+                        <span>Servidor: US-EAST-1</span>
+                        <span>Versión: 2.4.7-beta</span>
+                        <span>Última actualización: 15:42:33</span>
+                    </div>
+                </div>
+                
+                <div class="sidebar-clutter">
+                    <div class="ads">
+                        <h4>¡OFERTAS ESPECIALES!</h4>
+                        <p>Suscríbete a nuestro newsletter</p>
+                        <p>Síguenos en redes sociales</p>
+                        <p>Programa de lealtad</p>
+                        <p>Referir amigos</p>
+                    </div>
+                    
+                    <div class="unnecessary-features">
+                        <button>Comparar productos</button>
+                        <button>Lista de deseos</button>
+                        <button>Historial de navegación</button>
+                        <button>Productos recomendados</button>
+                        <button>Calculadora de envío</button>
+                        <button>Convertidor de moneda</button>
+                        <button>Chat en vivo</button>
+                        <button>Soporte técnico</button>
+                    </div>
+                </div>
+                
+                <div class="cart-items-b">
+                    <div class="cart-item-b">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%23ff6b6b'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-size='10'%3EError%3C/text%3E%3C/svg%3E" alt="Producto 1">
+                        <div class="item-details-b">
+                            <h4>Smartphone XYZ Model ABC-123-ULTRA-PRO-MAX</h4>
+                            <p class="price-b">$299.99 (Precio original: $399.99) (Descuento: 25%) (IVA incluido) (Envío: $15.99)</p>
+                            <p class="extra-info">SKU: SM-XYZ-001 | Categoría: Electrónicos | Peso: 0.2kg | Dimensiones: 15x7x0.8cm</p>
+                        </div>
+                        <div class="quantity-controls-b">
+                            <label>Cantidad exacta (solo números enteros positivos):</label>
+                            <input type="text" id="qty-strict-1" value="1" onchange="strictValidation(this)" pattern="[0-9]+">
+                        </div>
+                        <div class="multiple-remove-buttons">
+                            <button class="remove-btn-b">Eliminar</button>
+                            <button class="remove-btn-b">Quitar</button>
+                            <button class="remove-btn-b">Borrar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="complex-summary">
+                    <div class="detailed-breakdown">
+                        <p>Subtotal productos: $299.99</p>
+                        <p>Descuento aplicado: -$75.00</p>
+                        <p>IVA (21%): $47.25</p>
+                        <p>Tasa de procesamiento: $5.99</p>
+                        <p>Seguro de envío: $3.99</p>
+                        <p>Comisión de servicio: $2.50</p>
+                        <p>Redondeo: $0.01</p>
+                        <hr>
+                        <p><strong>Total final: $283.73</strong></p>
+                    </div>
+                    
+                    <div class="checkout-options">
+                        <button class="checkout-btn-b primary">COMPRAR AHORA</button>
+                        <button class="checkout-btn-b secondary">Guardar para después</button>
+                        <button class="checkout-btn-b tertiary">Solicitar cotización</button>
+                        <button class="checkout-btn-b quaternary">Comparar precios</button>
+                    </div>
+                </div>
+                
+                <div class="strict-promo">
+                    <label>Código promocional (formato: PROMO-XXXX-YYYY, exactamente 15 caracteres):</label>
+                    <input type="text" id="promo-strict" maxlength="15" minlength="15" pattern="PROMO-[A-Z]{4}-[A-Z]{4}">
+                    <button onclick="strictPromoValidation()">Validar código</button>
+                    <p class="error-msg" id="promo-error" style="display:none;">Error: El código debe tener exactamente 15 caracteres y seguir el formato PROMO-XXXX-YYYY</p>
+                </div>
+            </div>
+            
+            <!-- Explicación Versión B -->
+            <div class="explanation">
+                <h4>📋 Explicación - Versión B (Incorrecta)</h4>
+                <div class="law-explanation">
+                    <h5>❌ Ley de Postel</h5>
+                    <p><strong>Incumplimiento:</strong> La interfaz es extremadamente rígida con las entradas del usuario, rechazando formatos válidos por razones técnicas innecesarias. El campo de cantidad solo acepta números enteros positivos sin ceros a la izquierda, y el código promocional requiere un formato exacto de 15 caracteres (PROMO-XXXX-YYYY) pero aún así lo rechaza por múltiples razones arbitrarias, creando frustración innecesaria.</p>
+                </div>
+                <div class="law-explanation">
+                    <h5>❌ Ley de Pareto</h5>
+                    <p><strong>Incumplimiento:</strong> La interfaz está sobrecargada con funcionalidades irrelevantes que ocupan más espacio que las acciones principales. Incluye múltiples botones de compra confusos, información técnica innecesaria (ID de sesión, servidor), anuncios parpadeantes, y una barra lateral llena de funciones secundarias que distraen del objetivo principal de completar la compra.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
